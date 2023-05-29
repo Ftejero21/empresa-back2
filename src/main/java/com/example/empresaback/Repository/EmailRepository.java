@@ -11,6 +11,6 @@ public interface EmailRepository extends JpaRepository<Email,Long> {
 
     public List<Email> findByEmpresarioIdOrderByIdDesc(Long empresarioId);
 
-    @Query(value = "SELECT DISTINCT FROM emails WHERE email = :email order by id desc" , nativeQuery = true)
+    @Query(value = "SELECT DISTINCT email FROM emails WHERE email = :email", nativeQuery = true)
     public List<Email> findByEmail(@Param("email") String email);
 }

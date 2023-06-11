@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Empresario {
+public class Empresario  {
 
 
     @Id
@@ -64,4 +64,6 @@ public class Empresario {
 
     @OneToMany(mappedBy = "empresario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Email> emails;
+
+    // camposComunes
 }

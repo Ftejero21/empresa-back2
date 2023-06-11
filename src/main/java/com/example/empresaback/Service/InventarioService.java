@@ -6,6 +6,7 @@ import com.example.empresaback.Model.Inventario;
 import com.example.empresaback.Model.Sucursal;
 import com.example.empresaback.Repository.InventarioRepository;
 import com.example.empresaback.Repository.SucursalRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
@@ -47,9 +48,9 @@ public class InventarioService {
     public Inventario tramitarCompra(Long inventarioId){
         Optional<Inventario> personaOptional = inventarioRepository.findById(inventarioId);
         if (personaOptional.isPresent()) {
-            Inventario persona = personaOptional.get();
-            persona.setActivo(true);
-            return inventarioRepository.save(persona);
+            Inventario inventario = personaOptional.get();
+            inventario.setActivo(true);
+            return inventarioRepository.save(inventario);
         }
         return null;
     }
@@ -78,6 +79,7 @@ public class InventarioService {
         Optional<Inventario> optionalProducto = inventarioRepository.findById(inventarioId);
 
         if (optionalProducto.isPresent()) {
+
             Inventario inventario = optionalProducto.get();
             inventario.setNombre(inventarioDTO.getNombre());
             inventario.setPrecio(inventarioDTO.getPrecio());
